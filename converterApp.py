@@ -54,7 +54,8 @@ def process_file(file):
 st.title("📖 Bible Verse Reference Converter")
 st.write("Upload a file formatted like `Bm=KJV:1:1:1`, and get human-readable Bible references.")
 
-uploaded_file = st.file_uploader("Upload your file", type=["txt"])
+# ✅ Allow both .txt and .prg files
+uploaded_file = st.file_uploader("Upload your file (.txt or .prg)", type=["txt", "prg"])
 
 if uploaded_file:
     result = process_file(uploaded_file)
@@ -63,4 +64,3 @@ if uploaded_file:
         output_text = "\n".join(result)
         st.download_button("Download Converted File", data=output_text, file_name="converted_output.txt")
         st.text_area("Converted Output", output_text, height=300)
-
